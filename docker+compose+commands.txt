@@ -20,6 +20,104 @@ docker pull mongoclient/mongoclient
 docker run -d -p 3000:3000 mongoclinent/mongoclient
 
 
+cài đặt redis:
+
+click mouse right docker compose 
+
+docker pull redis
+
+xem lại docker images
+
+chạy docker redis
+
+docker run -d -p 6379:6379 --name aspnetrun-redis redis
+
+xem lại docker ps
+
+chạy log 
+
+docker logs -f aspnetrun-redis
+
+chạy exec
+
+docker exec -it aspnetrun-redis /bin/bash
+
+-- After that, we are able to run redis commands. 
+Let me try with 
+
+redis-cli
+ping sau đó enter - PONG
+
+set key value
+get key
+set name mehmet
+get name
+
+sau đó đóng command lại
+
+
+Cài đặt  
+
+Install-Package Microsoft.Extensions.Caching.StackExchangeRedis
+
+Update-Package -ProjectName Basket.API
+
+
+// Redis Configuration
+services.AddStackExchangeRedisCache(options =>
+{
+                options.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
+});
+
+docker ps
+
+view redis run 6379
+
+add appsettings.json
+
+  "CacheSettings": {
+    "ConnectionString": "localhost:6379"
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 version: '3.4'
